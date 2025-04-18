@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f9f0ff;
+            color: #5d2e8e;
+            padding: 20px;
+        }
+        .countdown {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .btn {
+            background: #5d2e8e;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #3a1a5e;
+        }
+    </style>
+</head>
+<body>
+    <h1>We're Getting Married! 💍</h1>
+    <h2>May 4, 2024</h2>
+    
+    <div class="countdown" id="countdown"></div>
+    
+    <a href="https://www.google.com/maps/dir//JX56%2BH45,+Akbarabad,+Batkhela/@34.6088504,71.8779588,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x38dc01c07180ddd1:0x43c8a77b6d30d22b!2m2!1d71.96036!2d34.6088781?entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D"_blank">
+        Get Directions 📍
+    </a>
+
+    <script>
+        // Countdown Timer
+        const weddingDate = new Date("May 4, 2024 00:00:00").getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "The Wedding Has Begun! 🎉";
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
+</body>
+</html>
